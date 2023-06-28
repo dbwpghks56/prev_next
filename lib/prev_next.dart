@@ -1,3 +1,3 @@
 library prev_next;
 
-export 'widget/prev_next.dart';
+export 'src/prev_next.dart';
