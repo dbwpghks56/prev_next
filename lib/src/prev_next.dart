@@ -66,7 +66,7 @@ class _PrevNextState extends State<PrevNext> {
                 overlayColor: widget.overlayColor,
                 thumbShape: _CustomThumbShape(
                   widget.thumbRadius,
-                  widget.thumbColor
+                  widget.thumbColor,
                 )
             ),
             child: widget.isVertical ?
@@ -144,7 +144,7 @@ class _CustomThumbShape extends SliderComponentShape {
 
     final Paint paint = Paint()
     ..isAntiAlias = true
-    ..strokeWidth = 4.0
+    ..strokeWidth = parentBox.size.height
     ..color = _thumbColor
     ..style = PaintingStyle.fill;
 

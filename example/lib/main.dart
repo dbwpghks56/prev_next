@@ -40,7 +40,7 @@ class _MyTestPage extends StatelessWidget {
                 prevImage: Image.network("https://scontent-gmp1-1.xx.fbcdn.net/v/t39.30808-6/292164839_5922693044501382_7982120233809238230_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=730e14&_nc_ohc=PLkAVG5o6EAAX9Vrvd3&_nc_ht=scontent-gmp1-1.xx&oh=00_AfAKdBXdBCKOxftY3hbMOQONLegNxiztoimQosk3PtYshA&oe=64A0E85A"),
                 nextImage: Image.network("https://scontent-gmp1-1.xx.fbcdn.net/v/t39.30808-6/292306069_5922693094501377_2145151340766256929_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=74eswlzpKOUAX_NrL4O&_nc_ht=scontent-gmp1-1.xx&oh=00_AfDawA1g1Gqz5ybBAbLz6Jy_EbQcONUiuDKvSZOqzPKKqw&oe=64A0A6EB"),
                 isVertical: true,
-                thumbColor: Colors.white,
+                thumbColor: Colors.black,
               ),
             )
           ],
