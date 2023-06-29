@@ -1,12 +1,15 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:prev_next/src/clipper_shape.dart';
+import 'package:prev_next/util/image_size_filter.dart';
 
 import '../util/custom_thumb_shape.dart';
 import '../util/image_size.dart';
+import 'clipper_shape.dart';
 
-class PrevNext extends StatefulWidget {
-  final Image prevImage;
-  final Image nextImage;
+class PrevNextFilter extends StatefulWidget {
+  final Image originImage;
+  final ImageFilter imageFilter;
   final double? imageHeight;
   final double? imageWidth;
   final double imageCornerRadius;
@@ -15,11 +18,10 @@ class PrevNext extends StatefulWidget {
   final Color? overlayColor;
   final bool isVertical;
 
-
-  const PrevNext({
+  const PrevNextFilter({
     Key? key,
-    required this.prevImage,
-    required this.nextImage,
+    required this.originImage,
+    required this.imageFilter,
     this.imageHeight,
     this.imageWidth,
     this.imageCornerRadius = 8.0,
@@ -30,10 +32,10 @@ class PrevNext extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PrevNextState createState() => _PrevNextState();
+  _PrevNextFilterState createState() => _PrevNextFilterState();
 }
 
-class _PrevNextState extends State<PrevNext> {
+class _PrevNextFilterState extends State<PrevNextFilter> {
   double _clipFactor = 0.5;
 
   @override
@@ -44,35 +46,36 @@ class _PrevNextState extends State<PrevNext> {
         Padding(
           padding: widget.isVertical ? const EdgeInsets.symmetric(vertical: 24.0) : const EdgeInsets.symmetric(horizontal: 24.0),
           child: ImageSize(
-            widget.nextImage,
-            widget.imageHeight,
-            widget.imageWidth,
-            widget.imageCornerRadius
+              widget.originImage,
+              widget.imageHeight,
+              widget.imageWidth,
+              widget.imageCornerRadius
           ),
         ),
         Padding(
-          padding: widget.isVertical ? const EdgeInsets.symmetric(vertical: 24.0) : const EdgeInsets.symmetric(horizontal: 24.0),
-          child: ClipPath(
-            clipper: widget.isVertical ? ClipperShapeVertical(_clipFactor) : ClipperShape(_clipFactor),
-            child: ImageSize(
-                widget.prevImage,
+            padding: widget.isVertical ? const EdgeInsets.symmetric(vertical: 24.0) : const EdgeInsets.symmetric(horizontal: 24.0),
+            child: ClipPath(
+              clipper: widget.isVertical ? ClipperShapeVertical(_clipFactor) : ClipperShape(_clipFactor),
+              child: ImageSizeFilter(
+                widget.originImage,
                 widget.imageHeight,
                 widget.imageWidth,
-                widget.imageCornerRadius
-            ),
-          )
+                widget.imageCornerRadius,
+                widget.imageFilter
+              )
+            )
         ),
         Positioned.fill(
-          child: SliderTheme(
-            data: SliderThemeData(
-                trackHeight: 0.0,
-                overlayColor: widget.overlayColor,
-                thumbShape: CustomThumbShape(
-                  widget.thumbRadius,
-                  widget.thumbColor,
-                )
-            ),
-            child: widget.isVertical ?
+            child: SliderTheme(
+              data: SliderThemeData(
+                  trackHeight: 0.0,
+                  overlayColor: widget.overlayColor,
+                  thumbShape: CustomThumbShape(
+                    widget.thumbRadius,
+                    widget.thumbColor,
+                  )
+              ),
+              child: widget.isVertical ?
               RotatedBox(
                 quarterTurns: 1,
                 child: Slider(
@@ -92,25 +95,9 @@ class _PrevNextState extends State<PrevNext> {
                   });
                 },
               ),
-          )
+            )
         )
       ],
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
