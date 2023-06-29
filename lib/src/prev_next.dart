@@ -79,7 +79,7 @@ class _PrevNextState extends State<PrevNext> {
                   value: _clipFactor,
                   onChanged: (double factor) {
                     setState(() {
-                      this._clipFactor = factor;
+                      _clipFactor = factor;
                     });
                   },
                 ),
@@ -88,7 +88,7 @@ class _PrevNextState extends State<PrevNext> {
                 value: _clipFactor,
                 onChanged: (double factor) {
                   setState(() {
-                    this._clipFactor = factor;
+                    _clipFactor = factor;
                   });
                 },
               ),

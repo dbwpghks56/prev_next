@@ -82,7 +82,7 @@ class _PrevNextFilterState extends State<PrevNextFilter> {
                   value: _clipFactor,
                   onChanged: (double factor) {
                     setState(() {
-                      this._clipFactor = factor;
+                      _clipFactor = factor;
                     });
                   },
                 ),
@@ -91,7 +91,7 @@ class _PrevNextFilterState extends State<PrevNextFilter> {
                 value: _clipFactor,
                 onChanged: (double factor) {
                   setState(() {
-                    this._clipFactor = factor;
+                    _clipFactor = factor;
                   });
                 },
               ),
